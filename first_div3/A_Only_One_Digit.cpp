@@ -1,25 +1,52 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int main()
 {
     int t;
     cin >> t;
+
     while (t--)
     {
         int x;
         cin >> x;
-        int y = 0;
-        while (x > 0)
+
+        for (int y = 0;; y++)
         {
-            int digit = x % 10;
-            if (y == 0 || digit < y)
+            int tempX = x;
+            int tempY = y;
+            bool found = false;
+
+            int digitX[10] = {0};
+
+            while (tempX > 0)
             {
-                y = digit;
+                digitX[tempX % 10] = 1;
+                tempX /= 10;
             }
-            x /= 10;
+
+            if (y == 0 && digitX[0])
+            {
+                found = true;
+            }
+
+            while (tempY > 0)
+            {
+                if (digitX[tempY % 10])
+                {
+                    found = true;
+                    break;
+                }
+                tempY /= 10;
+            }
+
+            if (found)
+            {
+                cout << y << endl;
+                break;
+            }
         }
-        cout << y << endl;
     }
+
     return 0;
 }
