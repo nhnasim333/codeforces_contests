@@ -1,17 +1,36 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main() {
+long long gcd(long long a, long long b)
+{
+    while (b != 0)
+    {
+        long long r = a % b;
+        a = b;
+        b = r;
+    }
+    return a;
+}
+
+int main()
+{
     int t;
     cin >> t;
-    while(t--) {
+    while (t--)
+    {
         long long a, b, k;
         cin >> a >> b >> k;
-        if (a <= k && b <= k) {
+
+        long long g = gcd(a, b);
+        long long dx = a / g;
+        long long dy = b / g;
+
+        if (dx <= k && dy <= k)
+        {
             cout << 1 << endl;
-        } else if (a % k == 0 && b % k == 0) {
-            cout << 1 << endl;
-        } else {
+        }
+        else
+        {
             cout << 2 << endl;
         }
     }
