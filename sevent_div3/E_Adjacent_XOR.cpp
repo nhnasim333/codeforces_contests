@@ -14,6 +14,7 @@ int main()
             cin >> a[i];
         for (int i = 0; i < n; ++i)
             cin >> b[i];
+
         bool ok = true;
         for (int i = 0; i < n - 1; ++i)
         {
